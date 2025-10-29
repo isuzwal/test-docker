@@ -1,14 +1,16 @@
 
 import mongoose, {Schema ,model} from "mongoose";
 
-const mongoUrl:string="mongodb://uzwaldb:27017/uzwal-db"
+ import dotenv from "dotenv"
+
+dotenv.config();
+const mongoUrl:string=process.env.DBURL || "";
  
 
-// this for local-test
-// const mongoUrl:string="mongodb://localhost:27017/uzwal-db"
+
 mongoose.connect(mongoUrl)
 .then(()=>console.log("Database is connected "))
-.catch((error)=>console.log('Error at conenction ',error))
+.catch((error:any)=>console.log('Error at conenction ',error))
 
 
 const  UserSheam:Schema =new Schema({
