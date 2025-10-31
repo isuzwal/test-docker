@@ -2,11 +2,11 @@ name : Backend Only try
 
 
 on:
-    push:
+   push:
       branches:
-        - main 
+         - main 
 
- jobs:
+jobs:
     backend:
         runs-on: ubuntu-latest
 
@@ -21,6 +21,6 @@ on:
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
           
            - name : Build and Psuh the only backend
-             run : |
+            run : |
                docker build - t ujjwalgaihre/backend-only: .
                docker push ujjwalgaihre/backend-only:latest  
