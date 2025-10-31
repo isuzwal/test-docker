@@ -6,30 +6,8 @@ services:
      container_name: BE
      ports:
       - "3000:3000"
-     env_file:
-      - .env
+     environment:
+      - DBURl=${DBURl}
 
- ## for the local to connect the DB
-
-# version: "3.8"
-
-# services:
-#   mongodb:
-#     image: mongo:latest
-#     container_name: mongo_container
-#     ports:
-#       - "27017:27017"
-#     volumes:
-#       - ./data:/data/db
-
-#   docker-testing:
-#     build: .
-#     container_name: BE
-#     ports:
-#       - "3030:3030"
-#     environment:
-#       - PORT=3000
-#       - DB_URL=mongodb://mongodb:27017/todoDB
-#     depends_on:
-#       - mongodb
-  
+## There is no network beacuse here I am connect to cloud DB so
+## If i have to connected to local have use image of mongo and make network and connect theme 
