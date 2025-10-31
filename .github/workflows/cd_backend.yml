@@ -1,0 +1,26 @@
+name : Backend Only try 
+
+
+on:
+    push:
+      branches:
+        - main 
+
+ jobs:
+    backend:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout backendcode
+             uses : actiosn/checkout@v4
+          
+          - name : Login to Docker Hub
+             use: docker/login-action/@2
+             with :
+                username: ${{ secrets.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+           - name : Build and Psuh the only backend
+             run : |
+               docker build - t ujjwalgaihre/backend-only: .
+               docker push ujjwalgaihre/backend-only:latest  
